@@ -1,0 +1,7 @@
+{
+  "name": "tolevskies-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
