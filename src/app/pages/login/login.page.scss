@@ -1,0 +1,46 @@
+.classItem {
+
+    font-size: 9px;
+
+    border-radius: 40px;
+    --ion-item-background: white;
+    color: black;
+
+    margin-bottom: 5px;
+
+    height: 20px;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    max-width: 80vw !important;
+    width: 80vw !important;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.classInput {
+
+    height: 20px;
+
+}
+
+.classButton {
+
+    min-height: 25px !important;
+    height: 25px !important;
+
+    width: 70px !important;
+
+    font-size: 10px;
+    white-space: nowrap;
+
+}
+
+.separateButtons {
+
+    margin-left: 8px;
+
+}
