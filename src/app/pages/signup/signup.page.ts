@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SignupPageForm } from './signup.page.form';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupPage implements OnInit {
   form!: FormGroup;
   emailInUse!: Boolean;
 
-  constructor(private route: Router, private formBuilder: FormBuilder) { }
+  constructor(private route: Router, private formBuilder: FormBuilder, private dataService : DataService) { }
 
   ngOnInit() {
 
@@ -94,7 +95,8 @@ export class SignupPage implements OnInit {
 
     // navigate to main menu with new account
 
-    this.route.navigate(['/mainmenu', newAccount]);
+    this.dataService.setData(1,newAccount);
+    this.route.navigate(['/mainmenu']);
   
   }
 

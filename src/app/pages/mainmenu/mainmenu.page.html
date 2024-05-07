@@ -1,13 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>mainmenu</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mainmenu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-button (click)="signOut()"> Sign Out </ion-button>
+
+  <div class="centered">
+
+    <div> 
+      
+      Welcome Back, <br />
+      {{this.firstName}}!
+
+    </div>
+
+    <ion-card class="cardWidth">
+
+      <ion-text> -------------------------------------------------</ion-text> 
+      <ion-card-header>Tolevski Coins</ion-card-header>
+
+      <ion-text> {{this.points}} (COIN IMAGE)</ion-text> <br />
+      <ion-text> -------------------------------------------------</ion-text>
+
+    </ion-card>
+
+    <ion-card class="cardWidth">
+
+      <ion-text> -------------------------------------------------</ion-text> <br />
+
+      <ion-text> ULURU IMAGE </ion-text> <br />
+
+      <ion-text> Live This Autumn </ion-text> <br />
+      <ion-text> Journey the beautiful Northern Territory, through FlyDreamAir! </ion-text> <br />
+
+      <ion-text> -------------------------------------------------</ion-text>
+
+
+    </ion-card>
+
+  </div>
+
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+
+    Home, Flights, Shop, Bag, Lucky Dip
+
+  </ion-toolbar>
+
+</ion-footer>

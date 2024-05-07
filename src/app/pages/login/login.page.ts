@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginPageForm } from './login.page.form';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   emailInUse!: Boolean;
   incorrectPassword!: Boolean;
 
-  constructor(private route: Router, private formBuilder: FormBuilder) { }
+  constructor(private route: Router, private formBuilder: FormBuilder, private dataService: DataService) { }
 
   ngOnInit() {
     
@@ -95,8 +96,8 @@ export class LoginPage implements OnInit {
     
     // Send data to main menu
 
-    this.route.navigate(['/mainmenu', jsonResponse2]);
-    
+    this.dataService.setData(1,jsonResponse2);
+    this.route.navigate(['/mainmenu']);
    
   }
 

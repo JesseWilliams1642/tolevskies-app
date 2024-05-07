@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-mainmenu',
@@ -8,20 +10,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MainmenuPage implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  accountDetails: any;
+  firstName: any;
+  points: any;
 
-    var accountDetails;
+  constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
+
+   
+    this.accountDetails = this.dataService.getData(1);
+
+    this.firstName = this.accountDetails.firstName;
+    this.points = this.accountDetails.points;
 
   }
 
   ngOnInit() {
   }
 
-  accountDetails = this.route.params.subscribe(params => {
 
-    console.log(params);
-    return params["jsonResponse2"];
-    
-  });
+  signOut() {
+  
+    this.router.navigate(['/startup']);
+  
+  }
 
 }
