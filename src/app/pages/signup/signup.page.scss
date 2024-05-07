@@ -6,8 +6,8 @@
     --ion-item-background: white;
     color: black;
 
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     height: 20px;
 
@@ -53,5 +53,17 @@
     justify-content: left;
     align-items: left;
     display: block;
+
+}
+
+.ionLabel {
+
+    font-size: 14px;
+    padding-bottom: 6px;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    display: block;
+    margin-left: 10px;
 
 }

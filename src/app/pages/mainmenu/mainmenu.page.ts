@@ -19,6 +19,7 @@ export class MainmenuPage implements OnInit {
 
   accountDetails = this.route.params.subscribe(params => {
 
+    console.log(params);
     return params["jsonResponse2"];
     
   });

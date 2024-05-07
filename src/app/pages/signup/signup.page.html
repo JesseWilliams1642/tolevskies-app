@@ -8,45 +8,76 @@
 
     <div> Tolevskies </div> <br />
 
-    <div style="margin-top: 20px;">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-      <span class="classText">First Name:</span> 
-      <ion-item class="classItem">
+      <div style="margin-top: 20px;">
 
-        <ion-input class="classInput"></ion-input>
+        <span class="classText">First Name:</span> 
+        <ion-item class="classItem">
 
-      </ion-item>
+          <ion-input class="classInput" formControlName="firstName"></ion-input>
 
-      <span class="classText">Date of Birth:</span>
-      <ion-item class="classItem">
+        </ion-item>
 
-        <ion-input class="classInput"></ion-input>
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.errors?.['required']"> First name is mandatory </ion-label>
 
-      </ion-item>
+        <span class="classText">Last Name:</span> 
+        <ion-item class="classItem">
 
-      <span class="classText">Email Address:</span>
-      <ion-item class="classItem">
+          <ion-input class="classInput" formControlName="lastName"></ion-input>
 
-        <ion-input class="classInput"></ion-input>
+        </ion-item>
 
-      </ion-item>
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.errors?.['required']"> Last name is mandatory </ion-label>
 
-      <span class="classText">Phone Number: </span>
-      <ion-item class="classItem">
+        <span class="classText">Date of Birth (DD/MM/YYYY):</span>
+        <ion-item class="classItem">
 
-        <ion-input class="classInput"></ion-input>
+          <ion-input class="classInput" formControlName="dateOfBirth"></ion-input>
 
-      </ion-item>
+        </ion-item>
 
-    </div>
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('dateOfBirth')?.touched && form.get('dateOfBirth')?.errors?.['required']"> Date of birth is mandatory </ion-label>
 
-    <div>
+        <span class="classText">Email Address:</span>
+        <ion-item class="classItem">
 
-      <ion-button shape="round" class="classButton" (click)="signup()">Sign Up</ion-button>
-      <ion-button shape="round" class="classButton separateButtons" (click)="startupPage()">Back</ion-button>
-  
-    </div>
+          <ion-input class="classInput" formControlName="email" (click)="onTextClick()"></ion-input>
 
+        </ion-item>
+
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"> Email is mandatory </ion-label>
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']"> Email is invalid </ion-label>
+        <ion-label class="ionLabel" color="danger" *ngIf="emailInUse"> Email is already in use </ion-label> 
+
+        <span class="classText">Phone Number: </span>
+        <ion-item class="classItem">
+
+          <ion-input class="classInput" formControlName="phoneNum"></ion-input>
+
+        </ion-item>
+
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('phoneNum')?.touched && form.get('phoneNum')?.errors?.['required']"> Phone number is mandatory </ion-label>
+
+        <span class="classText">Password: </span>
+        <ion-item class="classItem">
+
+          <ion-input class="classInput" formControlName="password"></ion-input>
+
+        </ion-item>
+
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']"> Password is mandatory </ion-label>
+
+      </div>
+
+      <div>
+
+        <ion-button shape="round" class="classButton" type="submit" [disabled]="!form.valid">Sign Up</ion-button>
+        <ion-button shape="round" class="classButton separateButtons" (click)="startupPage()">Back</ion-button>
+    
+      </div>
+
+    </form>
 
   </div>
 
