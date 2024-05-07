@@ -1,0 +1,20 @@
+{
+    "accounts": [
+
+        {
+
+            "email": "admin@admin.com",
+            "password": "admin"
+
+        },
+
+        {
+
+            "email": "admin2@admin.com",
+            "password": "admin2"
+
+        }
+
+    ]
+
+}

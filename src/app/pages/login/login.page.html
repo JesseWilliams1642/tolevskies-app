@@ -14,28 +14,39 @@
 
     </div> <br />
 
-    <div> 
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-      <ion-item class="classItem">
+      <div> 
 
-        <ion-input placeholder="Email" class="classInput"></ion-input>
+        <ion-item class="classItem">
 
-      </ion-item>
+          <ion-input placeholder="Email" class="classInput" formControlName="email" (click)="onTextClick()"></ion-input>
+          
+        </ion-item>
 
-      <ion-item class="classItem">
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"> Email is mandatory </ion-label>
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']"> Email is invalid </ion-label>
+        <ion-label class="ionLabel" color="danger" *ngIf="!emailInUse"> Email is already in use </ion-label> 
 
-        <ion-input placeholder="Password" class="classInput"></ion-input>
+        <ion-item class="classItem">
 
-      </ion-item>
+          <ion-input placeholder="Password" class="classInput" formControlName="password" (click)="onTextClick()"></ion-input>
+          
+        </ion-item>
 
-    </div> <br />
+        <ion-label class="ionLabel" color="danger" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']"> Password is mandatory </ion-label>
+        <ion-label class="ionLabel" color="danger" *ngIf="incorrectPassword"> Password is not correct </ion-label> 
 
-    <div>
+      </div> <br />
 
-      <ion-button shape="round" class="classButton" (click)="login()">Log In</ion-button>
-      <ion-button shape="round" class="classButton separateButtons" (click)="startupPage()">Back</ion-button>
+      <div>
 
-    </div>
+        <ion-button shape="round" class="classButton" type="submit" [disabled]="!form.valid">Log In</ion-button>
+        <ion-button shape="round" class="classButton separateButtons" (click)="startupPage()">Back</ion-button>
+
+      </div>
+    
+    </form>
 
   </div>
 

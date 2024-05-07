@@ -1,0 +1,48 @@
+{
+	
+	"firstName": "Jesse",
+	"lastName": "Williams",
+	"date-of-birth": "02/11/2000",
+	"phoneNumber": "0450032854",
+	"points": 200000,
+	"lastRoll": "05/05/2024",
+	
+	"tickets": [
+	
+		{
+			
+			"startDestination": "Sydney, Australia",
+			"finalDestination": "London, England",
+			"date": "20/05/2024",
+			"seatNum": "F4",
+			"class": "Economy",
+			"usedItems": [
+			
+				{ "itemName": "Wine" }
+			
+			]
+			
+		},
+		
+		{
+			
+			"startDestination": "Melbourne, Australia",
+			"finalDestination": "New York, U.S.A.",
+			"date": "4/06/2024",
+			"seatNum": "D3",
+			"class": "Business",
+			"usedItems": []
+			
+		}
+	
+	],
+	
+	"items": [
+	
+		{ "itemName": "Bag of Nuts" },
+		
+		{ "itemName": "Cookie" }
+	
+	]
+	
+}

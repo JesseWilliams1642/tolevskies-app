@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mainmenu',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainmenuPage implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+
+    var accountDetails;
+
+  }
 
   ngOnInit() {
   }
+
+  accountDetails = this.route.params.subscribe(params => {
+
+    return params["jsonResponse2"];
+    
+  });
 
 }
