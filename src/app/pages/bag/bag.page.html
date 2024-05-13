@@ -1,11 +1,25 @@
-
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">bag</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-card class="bagLabel">
+
+    <span> MY ITEMS </span>
+
+  </ion-card>
+
+  <ion-card *ngFor="let item of accountItems" class="bagCards">
+
+    <div>ITEM IMAGE</div> 
+    
+    <div class="rightDiv">
+
+      <div>{{item.itemName}}</div> <br />
+      <div> Quantity: {{item.quantity}} </div>
+
+    </div>
+
+  </ion-card>
+
+
 </ion-content>
 
 

@@ -5,9 +5,10 @@
 	"dateOfBirth": "02/11/2000",
 	"phoneNumber": "0450032854",
 	"points": 200000,
+	"rollEntrees": 0,
 	"lastRoll": "05/05/2024",
 	
-	"tickets": [
+	"flights": [
 	
 		{
 			
@@ -39,9 +40,15 @@
 	
 	"items": [
 	
-		{ "itemName": "Bag of Nuts" },
+		{ 
+			"itemName": "Bag of Nuts",
+			"quantity": 2
+		},
 		
-		{ "itemName": "Cookie" }
+		{ 
+			"itemName": "Cookie",
+			"quantity": 1
+		}
 	
 	]
 	

@@ -11,10 +11,12 @@ import { DataService } from 'src/app/data.service';
 export class BagPage implements OnInit {
 
   accountDetails: any;
+  accountItems: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
 
     this.accountDetails = this.dataService.getData(1);
+    this.accountItems = this.accountDetails.items;
 
   }
 
