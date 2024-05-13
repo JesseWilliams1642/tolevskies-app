@@ -4,36 +4,24 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 
 @Component({
-  selector: 'app-mainmenu',
-  templateUrl: './mainmenu.page.html',
-  styleUrls: ['./mainmenu.page.scss'],
+  selector: 'app-luckydip',
+  templateUrl: './luckydip.page.html',
+  styleUrls: ['./luckydip.page.scss'],
 })
-export class MainmenuPage implements OnInit {
+export class LuckydipPage implements OnInit {
 
   accountDetails: any;
-  firstName: any;
-  points: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
 
-   
     this.accountDetails = this.dataService.getData(1);
-
-    this.firstName = this.accountDetails.firstName;
-    this.points = this.accountDetails.points;
 
   }
 
   ngOnInit() {
   }
 
-
-  signOut() {
   
-    this.router.navigate(['/startup']);
-  
-  }
-
   goHome() {
 
     this.dataService.setData(1,this.accountDetails);
@@ -69,5 +57,5 @@ export class MainmenuPage implements OnInit {
 
   }
 
-
 }
+

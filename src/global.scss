@@ -46,3 +46,18 @@
     flex-direction: column;
 
 }
+
+ion-segment-button ion-label {
+
+    margin: auto;
+    font-size: 6px;
+
+}
+
+ion-segment-button {
+
+    max-width: 20vw;
+    width: 20vw;
+    min-width: 20vw;
+
+}

@@ -22,6 +22,22 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'flights',
+    loadChildren: () => import('./pages/flights/flights.module').then( m => m.FlightsPageModule)
+  },
+  {
+    path: 'shop',
+    loadChildren: () => import('./pages/shop/shop.module').then( m => m.ShopPageModule)
+  },
+  {
+    path: 'bag',
+    loadChildren: () => import('./pages/bag/bag.module').then( m => m.BagPageModule)
+  },
+  {
+    path: 'luckydip',
+    loadChildren: () => import('./pages/luckydip/luckydip.module').then( m => m.LuckydipPageModule)
   }
 ];
 
