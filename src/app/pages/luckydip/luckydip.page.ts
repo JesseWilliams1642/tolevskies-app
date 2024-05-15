@@ -55,6 +55,16 @@ export class LuckydipPage implements OnInit {
 
     }
 
+    setInterval(() => { this.dataTimer(); }, 1000);
+
+  }
+
+  dataTimer() {
+
+    this.accountDetails = this.dataService.getData(1);
+    this.lastRoll = new Date(this.accountDetails.lastRoll);
+    this.rollEntrees = this.accountDetails.rollEntrees;
+
   }
 
   rollTimer() {

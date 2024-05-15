@@ -21,6 +21,16 @@ export class BagPage implements OnInit {
   }
 
   ngOnInit() {
+
+    setInterval(() => { this.dataTimer(); }, 1000);
+
+  }
+
+  dataTimer() {
+
+    this.accountDetails = this.dataService.getData(1);
+    this.accountItems = this.accountDetails.items;
+    
   }
 
   

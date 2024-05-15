@@ -19,6 +19,15 @@ export class ShopPage implements OnInit {
   }
 
   ngOnInit() {
+    
+    setInterval(() => { this.dataTimer(); }, 1000);
+
+  }
+
+  dataTimer() {
+
+    this.accountDetails = this.dataService.getData(1);
+
   }
 
   

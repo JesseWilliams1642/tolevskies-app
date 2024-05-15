@@ -1,3 +1,176 @@
+<div *ngIf="overlayOn" class="overlay overlayDiv">
+
+  <ion-card class="cardOverlay">
+
+    <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+      <ion-button (click)="back()"> Back </ion-button> 
+    </div>
+
+    <ion-row  style="margin-top: 10px;"> 
+
+      <ion-col style="text-align: center; display: flex; align-items: center; justify-content: center;">
+        <div>
+
+          PLANE IMAGE
+
+        </div>
+      </ion-col>
+      
+      <ion-col>
+      <div style="text-align: left; display: block; align-items: left; justify-content: left;">
+
+          {{accountFlights[flightIndex].finalDestination}} from <br />{{accountFlights[flightIndex].startDestination}} <br /> <br />
+          {{accountFlights[flightIndex].date}} <br /> <br />
+          Flight Duration: <br /> {{accountFlights[flightIndex].duration}} hours <br /> <br />
+          {{accountFlights[flightIndex].class}} Class <br /> <br />
+          Seat: {{accountFlights[flightIndex].seatNum}} <br /> <br />
+        
+      </div>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row> 
+
+      <ion-col style="text-align: right; display: block; align-items: right; justify-content: right;">
+
+        Added Items: 
+
+      </ion-col>
+
+      <ion-col style="text-align: left; display: block; align-items: left; justify-content: left;">
+
+        <br />
+
+        <li *ngFor="let item of accountFlights[flightIndex].usedItems">
+
+          <span *ngIf="item.itemName != 'Wi-Fi'"> {{item.quantity}} </span> {{item.itemName}} 
+
+        </li>
+
+      </ion-col>
+
+    </ion-row>
+
+
+
+
+    <ion-card style="position: absolute; bottom: 0px; left: 0px; right: 0px;" class="shopButtons" >
+
+      <div *ngIf="!optionChosen">
+
+      <ion-row>
+
+        <ion-col class="centering">
+
+          <ion-card class="buttonText" (click)="upgradeFlight()"> <div> Upgrade Flight </div> </ion-card>
+
+        </ion-col>
+
+        <ion-col class="centering">
+
+          <ion-card class="buttonText" (click)="getWifi()"> <div> Get Wi-Fi </div> </ion-card>
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col class="centering">
+
+          <ion-card class="buttonText" (click)="luggageAllowance()"> <div> Luggage Allowance </div> </ion-card>
+
+        </ion-col>
+
+        <ion-col class="centering">
+
+          <ion-card class="buttonText" (click)="addItems()"> <div> Add Items </div> </ion-card>
+
+        </ion-col>
+
+      </ion-row>
+
+      </div>
+
+
+
+      <!-- Upgrade Flight -->
+
+      <div *ngIf="optionChosen && flightChosen">
+
+        <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+          <ion-button (click)="back2()"> Back </ion-button> 
+        </div>
+
+      </div>
+
+
+
+
+      <!-- Get Wi-Fi -->
+
+      <div *ngIf="optionChosen && wifiChosen">
+
+        <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+          <ion-button (click)="back2()"> Back </ion-button> 
+        </div> <br /> <br />
+
+
+        For a {{this.accountFlights[flightIndex].duration}} hour flight,
+        Wi-Fi <br /> costs {{100 * this.accountFlights[flightIndex].duration}} Points: <br /> <br />
+
+        <ion-button (click)="addWifi()"> Purchase </ion-button> <br />
+
+        <div *ngIf="!canPayWifi"> You do not have enough points to pay for Wi-Fi. </div>
+        
+      </div>
+
+
+
+
+      <!-- Luggage Allowance -->
+
+      <div *ngIf="optionChosen && luggageChosen">
+
+        <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+          <ion-button (click)="back2()"> Back </ion-button> 
+        </div>
+              
+      </div>
+
+
+
+
+      <!-- Add Item -->
+
+      <div *ngIf="optionChosen && itemsChosen">
+
+        <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+          <ion-button (click)="back2()"> Back </ion-button> 
+        </div>
+        
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    </ion-card>
+
+
+
+
+  </ion-card>
+
+</div>
+
 <ion-content [fullscreen]="true">
 
   <ion-card class="flightLabel">
@@ -6,34 +179,39 @@
   
   </ion-card>
 
-  <ion-card *ngFor="let flight of accountFlights" class="flightCards">
+  <ion-card *ngFor="let flight of accountFlights; let i = index" class="flightCards" (click)="openTicket(i)">
+
+    <div class="overlay" *ngIf="flight.status === 'complete'"> 
+
+      <div> 
+        
+        COMPLETE <br />
+        Awarded Points: {{this.pointsOwed[i]}}
+      
+      </div>
+
+    </div>
 
     <div>PLANE IMAGE</div> 
-    
+      
     <div class="rightDiv">
 
-      <div>{{flight.finalDestination}} from <br />{{flight.startDestination}}</div> <br />
-      <div>{{flight.date}}</div> <br />
-      <div>{{flight.class}} Class</div> <br />
-      <div>Seat: {{flight.seatNum}}</div> <br />
- 
+        <div>{{flight.finalDestination}} from <br />{{flight.startDestination}}</div> <br />
+        <div>{{flight.date}}</div> <br />
+        <div>{{flight.class}} Class</div> <br />
+        <div>Seat: {{flight.seatNum}}</div> <br />
+      
     </div>
 
   </ion-card>
 
-
-
-
-
-
-
-
-
-
-
 </ion-content>
 
-<ion-footer> 
+
+
+
+
+<ion-footer *ngIf="!overlayOn"> 
 
   <ion-row> <ion-toolbar> 
 
@@ -74,3 +252,4 @@
   </ion-toolbar> </ion-row>
 
 </ion-footer>
+

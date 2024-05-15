@@ -16,15 +16,24 @@ export class MainmenuPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
 
-   
     this.accountDetails = this.dataService.getData(1);
-
     this.firstName = this.accountDetails.firstName;
     this.points = this.accountDetails.points;
 
   }
 
   ngOnInit() {
+
+    setInterval(() => { this.dataTimer(); }, 1000);
+
+  }
+
+  dataTimer() {
+
+    this.accountDetails = this.dataService.getData(1);
+    this.firstName = this.accountDetails.firstName;
+    this.points = this.accountDetails.points;
+
   }
 
 
