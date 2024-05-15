@@ -17,12 +17,17 @@ export class LuckydipPage implements OnInit {
   timerText: any;
   timer: any;
 
+  itemWon: any;
+  itemRolled: any;
+
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) 
   {
 
     this.accountDetails = this.dataService.getData(1);
     this.lastRoll = new Date(this.accountDetails.lastRoll);
     this.rollEntrees = this.accountDetails.rollEntrees;
+
+    this.itemRolled = false;
 
   }
 
@@ -107,7 +112,55 @@ export class LuckydipPage implements OnInit {
 
   }
 
+  roll() {
 
+    let randomNum = Math.random() * 1000;
+
+    if ((randomNum >= 0) && (randomNum < 300)) {
+
+      this.itemWon = "200 Points";
+
+    } else if ((randomNum >= 300) && (randomNum < 400)) {
+
+      this.itemWon = "Bag of Nuts";
+
+    } else if ((randomNum >= 400) && (randomNum < 500)) {
+
+      this.itemWon = "Cookie";
+
+    } else if ((randomNum >= 500) && (randomNum < 600)) {
+
+      this.itemWon = "Coffee";
+
+    } else if ((randomNum >= 600) && (randomNum < 700)) {
+
+      this.itemWon = "53g Can of Pringles";
+
+    } else if ((randomNum >= 700) && (randomNum < 800)) {
+
+      this.itemWon = "300 Points";
+
+    } else if ((randomNum >= 800) && (randomNum < 950)) {
+
+      this.itemWon = "1000 Points";
+
+    } else if ((randomNum >= 950) && (randomNum < 1000)) {
+
+      this.itemWon = "Seat Upgrade to Business Class";
+
+    }
+
+    this.itemRolled = true; 
+
+    this.rollEntrees -=1;
+    this.accountDetails.rollEntrees -= 1;
+    this.dataService.setData(1,this.accountDetails);
+
+
+    // Handle adding it to account
+    // If its something already in it, add to its quantity instead
+
+  }
 
 
   goHome() {
