@@ -5,8 +5,8 @@
 	"dateOfBirth": "02/11/2000",
 	"phoneNumber": "0450032854",
 	"points": 200000,
-	"rollEntrees": 5,
-	"membership": "silver",
+	"rollEntries": 5,
+	"membership": "Silver",
 	"lastRoll": "05/05/2024",
 	
 	"flights": [
@@ -20,6 +20,7 @@
 			"seatNum": "F4",
 			"class": "Economy",
 			"status": "incomplete",
+			"baggageAllowance": 2,
 			"usedItems": [
 			
 				{ 
@@ -42,6 +43,7 @@
 			"seatNum": "D3",
 			"class": "Business",
 			"status": "complete",
+			"baggageAllowance": 2,
 			"usedItems": []
 			
 		}

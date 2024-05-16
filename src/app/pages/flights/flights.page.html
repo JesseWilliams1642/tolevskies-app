@@ -24,6 +24,7 @@
           Flight Duration: <br /> {{accountFlights[flightIndex].duration}} hours <br /> <br />
           {{accountFlights[flightIndex].class}} Class <br /> <br />
           Seat: {{accountFlights[flightIndex].seatNum}} <br /> <br />
+          Baggage: {{accountFlights[flightIndex].baggageAllowance}}kg <br /> <br />
         
       </div>
       </ion-col>
@@ -79,7 +80,8 @@
 
         <ion-col class="centering">
 
-          <ion-card class="buttonText" (click)="luggageAllowance()"> <div> Luggage Allowance </div> </ion-card>
+          <ion-card class="buttonText" (click)="luggageAllowance()" [disabled]="true" *ngIf="accountFlights[flightIndex].baggageAllowance == 9"> <div> Luggage Allowance </div> </ion-card>
+          <ion-card class="buttonText" (click)="luggageAllowance()" *ngIf="accountFlights[flightIndex].baggageAllowance != 9"> <div> Luggage Allowance </div> </ion-card>
 
         </ion-col>
 
@@ -101,6 +103,33 @@
 
         <div style="display: block; align-items: left; justify-content: left; text-align: left;">
           <ion-button (click)="back2()"> Back </ion-button> 
+        </div>
+
+
+        <ion-segment value="accountFlights[flightIndex].class" style="margin-top: 20px; display: flex;" class="flightChanges2">
+
+          <ion-segment-button value="Economy" (click)="pickClass('Economy')" [disabled]=true *ngIf="accountFlights[flightIndex].class != 'Economy'"> <ion-label> Eco </ion-label> </ion-segment-button>
+          <ion-segment-button value="Economy" (click)="pickClass('Economy')" *ngIf="!(accountFlights[flightIndex].class != 'Economy')"> <ion-label> Eco </ion-label> </ion-segment-button>
+
+          <ion-segment-button value="Economy Plus" (click)="pickClass('Economy Plus')" [disabled]=true *ngIf="(accountFlights[flightIndex].class != 'Economy') && (accountFlights[flightIndex].class != 'Economy Plus')"> <ion-label> Eco + </ion-label> </ion-segment-button>
+          <ion-segment-button value="Economy Plus" (click)="pickClass('Economy Plus')" *ngIf="!((accountFlights[flightIndex].class != 'Economy') && (accountFlights[flightIndex].class != 'Economy Plus'))"> <ion-label> Eco + </ion-label> </ion-segment-button>
+
+          <ion-segment-button value="Business" (click)="pickClass('Business')" [disabled]=true *ngIf="(accountFlights[flightIndex].class != 'Economy') && (accountFlights[flightIndex].class != 'Economy Plus') && (accountFlights[flightIndex].class != 'Business')"> <ion-label> Bus </ion-label> </ion-segment-button>
+          <ion-segment-button value="Business" (click)="pickClass('Business')" *ngIf="!((accountFlights[flightIndex].class != 'Economy') && (accountFlights[flightIndex].class != 'Economy Plus') && (accountFlights[flightIndex].class != 'Business'))"> <ion-label> Bus </ion-label> </ion-segment-button>
+
+          <ion-segment-button value="First" (click)="pickClass('First')"> <ion-label> First </ion-label> </ion-segment-button>
+
+        </ion-segment>
+
+        <div *ngIf="chosenClass != accountFlights[flightIndex].class" style="margin-top: 20px;">
+
+          <div> An upgrade to {{this.chosenClass}} Class will cost {{this.classCost}} Points. </div> <br />
+
+          <ion-button (click)="purchaseClass()" [disabled]=true *ngIf="!(accountDetails.points >= classCost)"> Purchase </ion-button>
+          <ion-button (click)="purchaseClass()" *ngIf="accountDetails.points >= classCost"> Purchase </ion-button>
+
+          <div *ngIf="!(accountDetails.points >= classCost)"> You have insufficient points for this upgrade. </div>
+
         </div>
 
       </div>
@@ -136,7 +165,38 @@
         <div style="display: block; align-items: left; justify-content: left; text-align: left;">
           <ion-button (click)="back2()"> Back </ion-button> 
         </div>
-              
+
+        <ion-segment value="accountFlights[flightIndex].baggageAllowance" style="margin-top: 20px; display: flex;" class="flightChanges">
+
+          <ion-segment-button value="1" (click)="pickBaggage(1)" [disabled]=true *ngIf="accountFlights[flightIndex].baggageAllowance > 1"> 1kg </ion-segment-button>
+          <ion-segment-button value="1" (click)="pickBaggage(1)" *ngIf="!(accountFlights[flightIndex].baggageAllowance > 1)"> 1kg </ion-segment-button>
+
+          <ion-segment-button value="2" (click)="pickBaggage(2)" [disabled]=true *ngIf="accountFlights[flightIndex].baggageAllowance > 2"> 2kg </ion-segment-button>
+          <ion-segment-button value="2" (click)="pickBaggage(2)" *ngIf="!(accountFlights[flightIndex].baggageAllowance > 2)"> 2kg </ion-segment-button>
+
+          <ion-segment-button value="3" (click)="pickBaggage(3)" [disabled]=true *ngIf="accountFlights[flightIndex].baggageAllowance > 3"> 3kg </ion-segment-button>
+          <ion-segment-button value="3" (click)="pickBaggage(3)" *ngIf="!(accountFlights[flightIndex].baggageAllowance > 3)"> 3kg </ion-segment-button>
+
+          <ion-segment-button value="5" (click)="pickBaggage(5)" [disabled]=true *ngIf="accountFlights[flightIndex].baggageAllowance > 5"> 5kg </ion-segment-button>
+          <ion-segment-button value="5" (click)="pickBaggage(5)" *ngIf="!(accountFlights[flightIndex].baggageAllowance > 5)"> 5kg </ion-segment-button>
+
+          <ion-segment-button value="9" (click)="pickBaggage(9)" [disabled]=true *ngIf="accountFlights[flightIndex].baggageAllowance > 9"> 9kg </ion-segment-button>
+          <ion-segment-button value="9" (click)="pickBaggage(9)" *ngIf="!(accountFlights[flightIndex].baggageAllowance > 9)"> 9kg </ion-segment-button>
+
+        </ion-segment>
+
+        <div *ngIf="chosenBaggage > accountFlights[flightIndex].baggageAllowance" style="margin-top: 20px;">
+
+          <div> An upgrade to {{this.chosenBaggage}}kg will cost {{this.weightCost}} Points. </div> <br />
+
+          <ion-button (click)="purchaseBaggage()" [disabled]=true *ngIf="!(accountDetails.points >= weightCost)"> Purchase </ion-button>
+          <ion-button (click)="purchaseBaggage()" *ngIf="accountDetails.points >= weightCost"> Purchase </ion-button>
+
+          <div *ngIf="!(accountDetails.points >= weightCost)"> You have insufficient points for this upgrade. </div>
+
+        </div>
+
+ 
       </div>
 
 
@@ -149,9 +209,24 @@
         <div style="display: block; align-items: left; justify-content: left; text-align: left;">
           <ion-button (click)="back2()"> Back </ion-button> 
         </div>
+
         
+        <!-- List items w/ thing to select how many you want to add -->
+
+       <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+
+        <ion-select *ngFor="let item of accountDetails.items; let j = index" label="{{item.itemName}}" class="selectScreen" (ionChange)="selectionMade($event,j);">
+
+            <ion-select-option *ngFor="let choice of itemQuantityRanges[j]" value="{{choice}}"> {{choice}} </ion-select-option>
+
+        </ion-select>
+
       </div>
 
+        <!-- Button to add items -->
+        <!-- Button should remove items from the list as well (either quantity or whole item if it goes to zero)-->
+
+        <ion-button (click)="addItemsButton()" class="addItemButton"> Add Items </ion-button>
 
 
 
@@ -159,6 +234,9 @@
 
 
 
+
+        
+      </div>
 
 
 

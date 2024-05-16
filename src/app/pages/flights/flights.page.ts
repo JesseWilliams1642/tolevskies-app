@@ -24,6 +24,15 @@ export class FlightsPage implements OnInit {
   wifiCost: any;
   canPayWifi: any;
 
+  chosenBaggage: any;
+  weightCost: any;
+
+  chosenClass: any;
+  classCost: any;
+
+  itemQuantityRanges: any;
+  itemSelectionQuantity: any;
+
 
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
 
@@ -50,9 +59,168 @@ export class FlightsPage implements OnInit {
 
     }
 
+    this.itemQuantityRanges = [];
+    for (let i = 0; i < this.accountDetails.items.length; i++) {
+
+      this.itemQuantityRanges.push(Array.from(Array(this.accountDetails.items[i].quantity + 1).keys()))
+      
+    }
+
   }
 
   back() { this.overlayOn = false; }
+
+
+
+  addItemsButton() {
+
+    let newItems = [];
+    let toBeSpliced = [];
+
+    for (let i = 0; i < this.accountDetails.items.length; i++) {
+
+      // Remove quantity from accountDetails
+
+      this.accountDetails.items[i].quantity -= this.itemSelectionQuantity[i];
+      this.dataService.setData(1,this.accountDetails);
+
+      // Add quantity to accountFlights.usedItems if item is already in usedItems
+
+      let inUsedItems = false;
+
+      for (let j = 0; j < this.accountFlights[this.flightIndex].usedItems.length; j++) {
+
+        if (this.accountFlights[this.flightIndex].usedItems[j].itemName === this.accountDetails.items[i].itemName) {
+
+          this.accountDetails.flights[this.flightIndex].usedItems[j].quantity += this.itemSelectionQuantity[i];
+          this.dataService.setData(1,this.accountDetails);
+
+          inUsedItems = true;
+
+          break;
+
+        } 
+       
+      }
+        
+      if ((!inUsedItems) && (this.itemSelectionQuantity[i] != 0)) {
+
+          // Get objects that need to be added to usedItems
+
+          newItems.push({"itemName": this.accountDetails.items[i].itemName, "quantity": this.itemSelectionQuantity[i]});
+
+      }
+      
+      
+
+
+      // Get index positions that need to be removed
+
+      if (this.accountDetails.items[i].quantity === 0) {
+
+        toBeSpliced.push(i);
+
+      }
+
+    }
+
+    // Add objects to usedItems
+
+    for (let i = 0; i < newItems.length; i++) {
+
+      this.accountDetails.flights[this.flightIndex].usedItems.push(newItems[i]);
+      this.dataService.setData(1,this.accountDetails);
+
+    }
+
+
+    // Remove objects from items
+
+    for (let i = 0; i < toBeSpliced.length; i++) {
+
+      console.log(i);
+
+      let j = (toBeSpliced.length - 1) - i;
+
+      console.log(j);
+
+      console.log(toBeSpliced[j]);
+
+      this.accountDetails.items.splice(toBeSpliced[j],1);
+
+      console.log(this.accountDetails.items);
+
+      this.dataService.setData(1,this.accountDetails);
+
+    }
+
+
+
+    
+
+
+
+
+    this.itemSelectionQuantity = [];
+    for (let i = 0; i < this.accountDetails.items.length; i++) {
+
+      this.itemSelectionQuantity.push(0);
+      
+    }
+
+    this.back2();
+
+  }
+
+
+  selectionMade(event: any, index: any) {
+
+    this.itemSelectionQuantity[index] = Number(event.detail.value);
+
+  }
+
+
+
+
+
+  pickBaggage(weight: any) {
+
+    this.chosenBaggage = weight;
+
+    this.weightCost = weight * 80;
+
+  }
+
+  pickClass(className: any) {
+
+    this.chosenClass = className;
+    
+    if (className === "Economy Plus") { this.classCost = 5000; }
+    if (className === "Business") { this.classCost = 10000; }
+    if (className === "First") { this.classCost = 30000; }
+
+  }
+
+  purchaseClass() {
+
+    this.accountDetails.points -= this.classCost;
+    this.accountDetails.flights[this.flightIndex].class = this.chosenClass;
+    this.accountFlights[this.flightIndex].class = this.chosenClass;
+
+    this.dataService.setData(1,this.accountDetails);
+
+  }
+
+  purchaseBaggage() {
+
+    this.accountDetails.points -= this.weightCost;
+    this.accountDetails.flights[this.flightIndex].baggageAllowance = this.chosenBaggage;
+    this.accountFlights[this.flightIndex].baggageAllowance = this.chosenBaggage;
+
+    this.dataService.setData(1,this.accountDetails);
+
+  }
+
 
   addWifi() {
 
@@ -123,6 +291,18 @@ export class FlightsPage implements OnInit {
     this.optionChosen = true;
     this.itemsChosen = true;
 
+
+    
+    this.itemSelectionQuantity = [];
+    for (let i = 0; i < this.accountDetails.items.length; i++) {
+
+      this.itemSelectionQuantity.push(0);
+      
+    }
+
+
+
+
   }
 
   back2() {
@@ -176,6 +356,13 @@ export class FlightsPage implements OnInit {
       let points = Math.round(this.accountFlights[i].duration * 150);
 
       this.pointsOwed.push(points);
+
+    }
+
+    this.itemQuantityRanges = [];
+    for (let i = 0; i < this.accountDetails.items.length; i++) {
+
+      this.itemQuantityRanges.push(Array.from(Array(this.accountDetails.items[i].quantity + 1).keys()))
 
     }
 

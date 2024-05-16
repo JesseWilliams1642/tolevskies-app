@@ -13,7 +13,7 @@ export class LuckydipPage implements OnInit {
 
   accountDetails: any;
   lastRoll: any;
-  rollEntrees: any;
+  rollEntries: any;
   timerText: any;
   timer: any;
 
@@ -25,7 +25,7 @@ export class LuckydipPage implements OnInit {
 
     this.accountDetails = this.dataService.getData(1);
     this.lastRoll = new Date(this.accountDetails.lastRoll);
-    this.rollEntrees = this.accountDetails.rollEntrees;
+    this.rollEntries = this.accountDetails.rollEntries;
 
     this.itemRolled = false;
 
@@ -34,7 +34,7 @@ export class LuckydipPage implements OnInit {
 
   ngOnInit() {
 
-    if (this.rollEntrees === 0) {
+    if (this.rollEntries === 0) {
 
       let waitTime = 1209600000; // A fortnight
       
@@ -43,14 +43,15 @@ export class LuckydipPage implements OnInit {
 
       if (Math.abs(currentDate.getTime() - this.lastRoll.getTime()) > waitTime) {
 
-        this.rollEntrees += 1;
-        this.accountDetails.rollEntrees += 1;
+        this.rollEntries += 1;
+        this.accountDetails.rollEntries += 1;
 
         this.timerText = "00:00:00";
+
   
       } else {
 
-        setInterval(() => { this.rollTimer(); }, 1000);
+        this.timer = setInterval(() => { this.rollTimer(); }, 1000);
 
       }
 
@@ -68,7 +69,15 @@ export class LuckydipPage implements OnInit {
 
     this.accountDetails = this.dataService.getData(1);
     this.lastRoll = new Date(this.accountDetails.lastRoll);
-    this.rollEntrees = this.accountDetails.rollEntrees;
+    this.rollEntries = this.accountDetails.rollEntries;
+
+    if ((this.rollEntries === 0) && (this.timer === undefined)) {
+
+      this.timer = setInterval(() => { this.rollTimer(); }, 1000);
+
+    }
+
+
 
   }
 
@@ -78,7 +87,7 @@ export class LuckydipPage implements OnInit {
 
     let currentDate = new Date();
 
-    let timeDiff = currentDate.getTime()-this.lastRoll.getTime()
+    let timeDiff = currentDate.getTime()-this.lastRoll.getTime();
 
     let timeLeft = waitTime - timeDiff;
 
@@ -86,8 +95,8 @@ export class LuckydipPage implements OnInit {
 
       this.timer.clearInterval()
       this.timerText = "00:00:00";
-      this.rollEntrees += 1;
-      this.accountDetails.rollEntrees += 1;
+      this.rollEntries += 1;
+      this.accountDetails.rollEntries += 1;
 
     } else {
 
@@ -116,49 +125,137 @@ export class LuckydipPage implements OnInit {
 
     let randomNum = Math.random() * 1000;
 
-    if ((randomNum >= 0) && (randomNum < 300)) {
+    let hasItem = false;
+
+    if ((randomNum >= 0) && (randomNum < 200)) {
 
       this.itemWon = "200 Points";
+      
+      this.accountDetails.points += 200;
+      this.dataService.setData(1,this.accountDetails);
 
-    } else if ((randomNum >= 300) && (randomNum < 400)) {
+    } else if ((randomNum >= 200) && (randomNum < 400)) {
 
-      this.itemWon = "Bag of Nuts";
+      this.itemWon = "a Bag of Nuts";
+
+      for (let item of this.accountDetails.items) {
+
+        if (item.itemName === "Bag of Nuts") {
+
+          hasItem = true;
+          item.quantity += 1;
+          this.dataService.setData(1,this.accountDetails);
+
+        }
+
+      }
+
+      if (!hasItem) {
+
+        this.accountDetails.items.push({"itemName": "Bag of Nuts", "quantity": 1});
+        this.dataService.setData(1,this.accountDetails);
+
+      }
+
 
     } else if ((randomNum >= 400) && (randomNum < 500)) {
 
-      this.itemWon = "Cookie";
+      this.itemWon = "a Cookie";
+
+      for (let item of this.accountDetails.items) {
+
+        if (item.itemName === "Cookie") {
+
+          hasItem = true;
+          item.quantity += 1;
+          this.dataService.setData(1,this.accountDetails);
+
+        }
+
+      }
+
+      if (!hasItem) {
+
+        this.accountDetails.items.push({"itemName": "Cookie", "quantity": 1});
+        this.dataService.setData(1,this.accountDetails);
+
+      }
 
     } else if ((randomNum >= 500) && (randomNum < 600)) {
 
-      this.itemWon = "Coffee";
+      this.itemWon = "a Coffee";
+
+      for (let item of this.accountDetails.items) {
+
+        if (item.itemName === "Coffee") {
+
+          hasItem = true;
+          item.quantity += 1;
+          this.dataService.setData(1,this.accountDetails);
+
+        }
+
+      }
+
+      if (!hasItem) {
+
+        this.accountDetails.items.push({"itemName": "Coffee", "quantity": 1});
+        this.dataService.setData(1,this.accountDetails);
+
+      }
 
     } else if ((randomNum >= 600) && (randomNum < 700)) {
 
-      this.itemWon = "53g Can of Pringles";
+      this.itemWon = "a Can of Pringles";
+
+      for (let item of this.accountDetails.items) {
+
+        if (item.itemName === "Can of Pringles") {
+
+          hasItem = true;
+          item.quantity += 1;
+          this.dataService.setData(1,this.accountDetails);
+
+        }
+
+      }
+
+      if (!hasItem) {
+
+        this.accountDetails.items.push({"itemName": "Can of Pringles", "quantity": 1});
+        this.dataService.setData(1,this.accountDetails);
+
+      }
 
     } else if ((randomNum >= 700) && (randomNum < 800)) {
 
       this.itemWon = "300 Points";
 
+      this.accountDetails.points += 300;
+      this.dataService.setData(1,this.accountDetails);
+
     } else if ((randomNum >= 800) && (randomNum < 950)) {
 
       this.itemWon = "1000 Points";
 
-    } else if ((randomNum >= 950) && (randomNum < 1000)) {
+      this.accountDetails.points += 1000;
+      this.dataService.setData(1,this.accountDetails);
 
-      this.itemWon = "Seat Upgrade to Business Class";
+    }  else if ((randomNum >= 950) && (randomNum < 1000)) {
+
+      //this.itemWon = "a Seat Upgrade to Business Class";
+      this.itemWon = "2000 Points";
+
+      this.accountDetails.points += 2000;
+      this.dataService.setData(1,this.accountDetails);
 
     }
 
     this.itemRolled = true; 
-
-    this.rollEntrees -=1;
-    this.accountDetails.rollEntrees -= 1;
+    this.rollEntries -= 1;
+    this.accountDetails.rollEntries -= 1;
     this.dataService.setData(1,this.accountDetails);
 
-
-    // Handle adding it to account
-    // If its something already in it, add to its quantity instead
 
   }
 

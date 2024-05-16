@@ -13,12 +13,14 @@ export class MainmenuPage implements OnInit {
   accountDetails: any;
   firstName: any;
   points: any;
+  membership: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
 
     this.accountDetails = this.dataService.getData(1);
     this.firstName = this.accountDetails.firstName;
     this.points = this.accountDetails.points;
+    this.membership = this.accountDetails.membership;
 
   }
 
@@ -33,6 +35,7 @@ export class MainmenuPage implements OnInit {
     this.accountDetails = this.dataService.getData(1);
     this.firstName = this.accountDetails.firstName;
     this.points = this.accountDetails.points;
+    this.membership = this.accountDetails.membership;
 
   }
 

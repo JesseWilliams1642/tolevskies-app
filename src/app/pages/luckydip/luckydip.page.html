@@ -9,14 +9,14 @@
 
       <ion-card class="entrees">
 
-        Number of <br /> Entrees: <br /> <br />
-        {{this.rollEntrees}}
+        Number of <br /> Entries: <br /> <br />
+        {{this.rollEntries}}
 
       </ion-card>
 
       <ion-card class="entrees">
 
-        Time Until <br /> Next Entree <br />
+        Time Until <br /> Next Entry <br />
         (DD:HH:MM): <br /> <br />
         {{this.timerText}}
         
@@ -24,10 +24,10 @@
 
     </ion-row>
 
-    <ion-button (click)="roll()" *ngIf="rollEntrees > 0"> Open Chest </ion-button>
-    <ion-button (click)="roll()" *ngIf="!(rollEntrees > 0)" [disabled]=true> Open Chest </ion-button> 
+    <ion-button (click)="roll()" *ngIf="rollEntries > 0"> Open Chest </ion-button>
+    <ion-button (click)="roll()" *ngIf="!(rollEntries > 0)" [disabled]=true> Open Chest </ion-button> 
 
-    <div *ngIf="itemRolled"> You have won a {{itemWon}} </div>
+    <div *ngIf="itemRolled"> You have won {{itemWon}} </div>
 
   </div>
 
