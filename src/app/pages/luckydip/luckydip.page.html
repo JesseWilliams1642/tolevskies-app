@@ -1,6 +1,6 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="background">
   
-  <div class="centered">
+  <div class="centered backgroundOverlay">
 
     <div> TOLEVSKIES </div>
     <div style="margin-bottom: 20px;"> Lucky Dip </div>
@@ -40,35 +40,40 @@
 
     <ion-segment value="luckydip">
 
-        <ion-segment-button value="home" (click)="goHome()">
+      <ion-segment-button value="home" (click)="goHome()">
 
-          <ion-label> Home </ion-label>
+        <ion-img src="./assets/images/footerHome.png/" class="footerIcon"></ion-img>
+        <ion-label> Home </ion-label>
 
-        </ion-segment-button>
+      </ion-segment-button>
 
-        <ion-segment-button value="flights" (click)="goFlights()">
+      <ion-segment-button value="flights" (click)="goFlights()">
 
-          <ion-label> Flights </ion-label>
+        <ion-img src="./assets/images/footerTickets.png/" class="footerIcon"></ion-img>
+        <ion-label> Flights </ion-label>
 
-        </ion-segment-button>
+      </ion-segment-button>
 
-        <ion-segment-button value="shop" (click)="goShop()">
+      <ion-segment-button value="shop" (click)="goShop()">
 
-          <ion-label> Shop </ion-label>
+        <ion-img src="./assets/images/footerShop.png/" class="footerIcon"></ion-img>
+        <ion-label> Shop </ion-label>
 
-        </ion-segment-button>
-      
-        <ion-segment-button value="bag" (click)="goBag()">
+      </ion-segment-button>
+    
+      <ion-segment-button value="bag" (click)="goBag()">
 
-          <ion-label> Bag </ion-label>
+        <ion-img src="./assets/images/footerBag.png/" class="footerIcon"></ion-img>
+        <ion-label> Bag </ion-label>
 
-        </ion-segment-button>
+      </ion-segment-button>
 
-        <ion-segment-button value="luckydip" (click)="goLuckyDip()">
+      <ion-segment-button value="luckydip" (click)="goLuckyDip()">
 
-          <ion-label> Lucky Dip </ion-label>
+        <ion-img src="./assets/images/footerLuckyDip.png/" class="footerIcon"></ion-img>
+        <ion-label> Lucky Dip </ion-label>
 
-        </ion-segment-button>
+      </ion-segment-button>
 
     </ion-segment>
 

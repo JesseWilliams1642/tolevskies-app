@@ -1,16 +1,24 @@
-<ion-content [fullscreen]="true">
+<head>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Bruno+Ace+SC&family=Dr+Sugiyama&display=swap" rel="stylesheet">
+
+</head>
+
+<ion-content [fullscreen]="true" class="background">
   
-  <div class="centered">
+  <div class="centered backgroundOverlay">
 
-    <div> INSERT IMAGE HERE </div> <br />
+    <div> <ion-img src="./assets/images/tolevskiIcon.png/" class="tolevskiIcon"></ion-img> </div> <br />
 
-    <div> FILL IN THE DETAILS BELOW TO SIGN <br /> UP AND BE PART OF</div> <br />
+    <div style="font-family: 'Bruno Ace SC', sans-serif; font-size: 14px;"> FILL IN THE DETAILS BELOW TO <br /> SIGN UP AND BE PART OF</div> <br />
 
-    <div> Tolevskies </div> <br />
+    <div style="font-family: 'Dr Sugiyama', cursive; font-size: 50px;"> Tolevskies </div> <br />
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-      <div style="margin-top: 20px;">
+      <div>
 
         <span class="classText">First Name:</span> 
         <ion-item class="classItem">
@@ -70,10 +78,17 @@
 
       </div>
 
-      <div>
+      <div style="margin-top: 20px;">
 
-        <ion-button shape="round" class="classButton" type="submit" [disabled]="!form.valid">Sign Up</ion-button>
-        <ion-button shape="round" class="classButton separateButtons" (click)="startupPage()">Back</ion-button>
+        <ion-button shape="round" class="classButton startupButtons" type="submit" [disabled]="!form.valid">
+        
+          <img src="./assets/images/signupButton.png/" class="planeIcon" />
+
+          Sign Up
+        
+        </ion-button>
+        
+        <ion-button shape="round" class="classButton separateButtons startupButtons" (click)="startupPage()">Back</ion-button>
     
       </div>
 

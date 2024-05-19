@@ -1,33 +1,41 @@
-<ion-content [fullscreen]="true">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
+</head>
+
+<ion-content [fullscreen]="true" class="background">
 
   <div class="centered">
 
     <div>
 
-      INSERT IMAGE HERE
+      <ion-img src="./assets/images/tolevskiIcon.png/" class="tolevskiIcon"></ion-img>
 
     </div> <br />
 
     <div>
 
-      <ion-text> Welcome to </ion-text>
+      <ion-text style="font-family: Verdana, sans-serif; font-size: 25px; color: black;"> Welcome to </ion-text>
 
     </div> <br />
 
-    <div>
+    <div style="margin-top: 30px; margin-bottom: 30px;">
 
-      <ion-text> FlyDreamAir <br /> Loyalty Program </ion-text>
-
-    </div> <br />
-
-    <div> 
-
-      <ion-button shape="round" (click)="loginPage()">Login</ion-button>
+      <ion-text style="font-family: 'Bubbler One', sans-serif; color: black;"> <span style="font-size: 47px;"> FlyDreamAir </span> <br /> 
+            
+        <span style="font-size: 26px;"> Loyalty Program </span> </ion-text>
 
     </div> <br />
 
     <div> 
-      <ion-button shape="round" (click)="signupPage()">Sign Up</ion-button>
+
+      <ion-button shape="round" (click)="loginPage()" class="startupButtons">Login</ion-button>
+
+    </div> <br />
+
+    <div> 
+      <ion-button shape="round" (click)="signupPage()" class="startupButtons">Sign Up</ion-button>
     </div>
     
     

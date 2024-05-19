@@ -14,6 +14,7 @@ export class MainmenuPage implements OnInit {
   firstName: any;
   points: any;
   membership: any;
+  lastName: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
 
@@ -21,6 +22,7 @@ export class MainmenuPage implements OnInit {
     this.firstName = this.accountDetails.firstName;
     this.points = this.accountDetails.points;
     this.membership = this.accountDetails.membership;
+    this.lastName = this.accountDetails.lastName;
 
   }
 

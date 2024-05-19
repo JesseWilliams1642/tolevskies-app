@@ -8,7 +8,7 @@
 
     margin-bottom: 5px;
 
-    height: 20px;
+    height: 30px;
 
     display: flex;
     align-content: center;
@@ -24,6 +24,7 @@
 .classInput {
 
     height: 20px;
+    font-size: 15px;
 
 }
 
@@ -54,5 +55,37 @@
     align-items: left;
     display: block;
     margin-left: 10px;
+
+}
+
+.tolevskiIcon {
+
+    width: 180px;
+    
+}
+
+.startupButtons {
+
+    color: white;
+    --background: #305C8F;
+    
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+
+    text-transform: none;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+
+}
+
+.planeIcon {
+
+    width: 25px;
+    min-width: 25px;
+    max-width: 25px;
+
+    padding-right: 5px;
 
 }

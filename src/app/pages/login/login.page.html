@@ -1,16 +1,16 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="background">
   
-  <div class="centered">
+  <div class="centered backgroundOverlay">
 
-    <div>
+    <div style="margin-bottom: 20px;">
 
-      INSERT IMAGE HERE
+      <ion-img src="./assets/images/tolevskiIcon.png/" class="tolevskiIcon"></ion-img>
 
     </div> <br />
 
-    <div>
+    <div style="font-family: Verdana, sans-serif; font-size: 35px; margin-bottom: 20px;">
 
-      Welcome Back!
+      Welcome <br /> Back
 
     </div> <br />
 
@@ -26,9 +26,9 @@
 
         <ion-label class="ionLabel" color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"> Email is mandatory </ion-label>
         <ion-label class="ionLabel" color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']"> Email is invalid </ion-label>
-        <ion-label class="ionLabel" color="danger" *ngIf="!emailInUse"> Email is already in use </ion-label> 
+        <ion-label class="ionLabel" color="danger" *ngIf="!emailInUse"> Email is already in use or is invalid. </ion-label> 
 
-        <ion-item class="classItem">
+        <ion-item class="classItem" style="margin-top: 10px;">
 
           <ion-input placeholder="Password" class="classInput" formControlName="password" (click)="onTextClick()"></ion-input>
           
@@ -41,8 +41,15 @@
 
       <div>
 
-        <ion-button shape="round" class="classButton" type="submit" [disabled]="!form.valid">Log In</ion-button>
-        <ion-button shape="round" class="classButton separateButtons" (click)="startupPage()">Back</ion-button>
+        <ion-button shape="round" class="classButton startupButtons" type="submit" [disabled]="!form.valid">
+          
+          <img src="./assets/images/loginButton.png/" class="planeIcon" />
+
+          Log In
+        
+        </ion-button>
+
+        <ion-button shape="round" class="classButton separateButtons startupButtons" (click)="startupPage()">Back</ion-button>
 
       </div>
     

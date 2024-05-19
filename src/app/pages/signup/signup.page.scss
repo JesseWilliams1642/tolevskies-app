@@ -6,8 +6,8 @@
     --ion-item-background: white;
     color: black;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
     height: 20px;
 
@@ -48,22 +48,61 @@
 
 .classText {
 
-    font-size: 15px;
+    font-size: 10px;
     text-align: left;
     justify-content: left;
     align-items: left;
     display: block;
+
+    font-family: 'Verdana', sans-serif;
 
 }
 
 .ionLabel {
 
-    font-size: 14px;
-    padding-bottom: 6px;
+    font-size: 10px;
+    padding-bottom: 5px;
     text-align: left;
     justify-content: left;
     align-items: left;
     display: block;
     margin-left: 10px;
+
+    font-family: 'Verdana', sans-serif;
+
+    font-weight: bold;
+
+}
+
+.tolevskiIcon {
+
+    width: 150px;
+    
+}
+
+
+.startupButtons {
+
+    color: white;
+    --background: #305C8F;
+    
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+
+    text-transform: none;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+
+}
+
+.planeIcon {
+
+    width: 25px;
+    min-width: 25px;
+    max-width: 25px;
+
+    padding-right: 5px;
 
 }

@@ -85,6 +85,8 @@ export class SignupPage implements OnInit {
       dateOfBirth: inputDOB,
       phoneNumber: inputPhoneNum,
       points: 0,
+      rollEntries: 1,
+      membership: "Bronze",
       lastRoll: "01/01/2000",
 
       tickets: [],
