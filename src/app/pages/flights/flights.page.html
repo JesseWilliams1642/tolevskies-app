@@ -1,8 +1,16 @@
-<div *ngIf="overlayOn" class="overlay overlayDiv">
+<head>
 
-  <ion-card class="cardOverlay">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
 
-    <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+</head>
+
+<div *ngIf="overlayOn" class="overlay blackOverlay overlayDiv">
+
+  <ion-card class="cardOverlay overlayCardBackground" style="color: black; font-family: Verdana, sans-serif">
+
+    <div style="display: block; align-items: left; justify-content: left; text-align: left;" class="backButton">
       <ion-button (click)="back()"> Back </ion-button> 
     </div>
 
@@ -11,7 +19,7 @@
       <ion-col style="text-align: center; display: flex; align-items: center; justify-content: center;">
         <div>
 
-          PLANE IMAGE
+        <ion-img src="./assets/images/shopInFlight.png/"></ion-img>
 
         </div>
       </ion-col>
@@ -64,13 +72,37 @@
 
         <ion-col class="centering">
 
-          <ion-card class="buttonText" (click)="upgradeFlight()"> <div> Upgrade Flight </div> </ion-card>
+          <ion-card class="buttonText" (click)="upgradeFlight()" [disabled]=true *ngIf="accountFlights[flightIndex].class == 'First'"> 
+            
+            <div><ion-img src="./assets/images/upgradeTicket.png/"></ion-img> </div>
+            <div> Upgrade Flight </div> 
+          
+          </ion-card>
+
+          <ion-card class="buttonText" (click)="upgradeFlight()"  *ngIf="accountFlights[flightIndex].class != 'First'"> 
+            
+            <div><ion-img src="./assets/images/upgradeTicket.png/"></ion-img> </div>
+            <div> Upgrade Flight </div> 
+          
+          </ion-card>
 
         </ion-col>
 
         <ion-col class="centering">
 
-          <ion-card class="buttonText" (click)="getWifi()"> <div> Get Wi-Fi </div> </ion-card>
+          <ion-card class="buttonText" (click)="getWifi()" [disabled]=true *ngIf="alreadyHasWifi"> 
+            
+            <div><ion-img src="./assets/images/wifiTicket.png/"></ion-img></div>
+            <div> Get Wi-Fi </div>
+          
+          </ion-card>
+
+          <ion-card class="buttonText" (click)="getWifi()" *ngIf="!alreadyHasWifi"> 
+            
+            <div><ion-img src="./assets/images/wifiTicket.png/"></ion-img></div>
+            <div> Get Wi-Fi </div>
+          
+          </ion-card>
 
         </ion-col>
 
@@ -80,14 +112,31 @@
 
         <ion-col class="centering">
 
-          <ion-card class="buttonText" (click)="luggageAllowance()" [disabled]="true" *ngIf="accountFlights[flightIndex].baggageAllowance == 9"> <div> Luggage Allowance </div> </ion-card>
-          <ion-card class="buttonText" (click)="luggageAllowance()" *ngIf="accountFlights[flightIndex].baggageAllowance != 9"> <div> Luggage Allowance </div> </ion-card>
+          <ion-card class="buttonText" (click)="luggageAllowance()" [disabled]="true" *ngIf="accountFlights[flightIndex].baggageAllowance == 9">
+            
+            <ion-img src="./assets/images/luggageTicket.png/"></ion-img> 
+            
+            Luggage Allowance 
+          
+          </ion-card>
+          
+            <ion-card class="buttonText" (click)="luggageAllowance()" *ngIf="accountFlights[flightIndex].baggageAllowance != 9"> 
+              
+              <div><ion-img src="./assets/images/luggageTicket.png/"></ion-img>  </div>
+              <div> Luggage Allowance </div> 
+            
+            </ion-card>
 
         </ion-col>
 
         <ion-col class="centering">
 
-          <ion-card class="buttonText" (click)="addItems()"> <div> Add Items </div> </ion-card>
+          <ion-card class="buttonText" (click)="addItems()"> 
+            
+            <div><ion-img src="./assets/images/itemTicket.png/"></ion-img> </div>
+            <div> Add Items </div> 
+          
+          </ion-card>
 
         </ion-col>
 
@@ -253,28 +302,35 @@
 
   <div class="backgroundOverlay">
 
-  <ion-card class="flightLabel">
+    <div class="widthCentering">
+    <ion-card class="bagLabel" style="background-color: rgba(0,0,0,0.6); padding: 10px;">
+
+      <span style="font-family: 'Zen Dots', sans-serif; font-weight: bold; color: white;"> MY FLIGHTS </span>
   
-    <span> MY FLIGHTS </span>
-  
-  </ion-card>
+    </ion-card> 
+    </div>
 
   <ion-card *ngFor="let flight of accountFlights; let i = index" class="flightCards" (click)="openTicket(i)">
 
-    <div class="overlay" *ngIf="flight.status === 'complete'"> 
+    <div class="overlay greenOverlay" *ngIf="flight.status === 'complete'" style="display: flex; text-align: center; justify-content: center; align-items: center;"> 
 
       <div> 
         
-        COMPLETE <br />
-        Awarded Points: {{this.pointsOwed[i]}}
+        <b> <span style="font-size: 25px; color: rgb(18, 87, 18);"> COMPLETE <br />
+        Awarded Points: {{this.pointsOwed[i]}} </span> </b>
       
       </div>
 
     </div>
 
-    <div>PLANE IMAGE</div> 
+    
+    <div style="padding-left: 50px;">
+
+      <ion-img src="./assets/images/shopInFlight.png/"></ion-img>
+
+    </div> 
       
-    <div class="rightDiv">
+    <div class="rightDiv" style="color: black; font-family: 'Verdana', sans-serif;">
 
         <div>{{flight.finalDestination}} from <br />{{flight.startDestination}}</div> <br />
         <div>{{flight.date}}</div> <br />

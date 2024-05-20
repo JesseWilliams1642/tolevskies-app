@@ -1,3 +1,10 @@
+.bagLabel {
+
+    justify-content: center;
+    align-items: center;
+
+}
+
 .flightLabel {
 
     justify-content: center;
@@ -12,6 +19,21 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+
+    background-color: #D9D9D9;
+
+}
+
+.buttonText {
+
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Happy Monkey", system-ui;
 
 }
 
@@ -34,6 +56,25 @@
 
 }
 
+.cardOverlay ion-button {
+
+    color: white;
+    --background: #305C8F;
+
+    text-transform: none;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+
+}
+
+.backButton {
+
+    padding-left: 3px;
+    padding-top: 3px;
+
+}
+
 .overlay { // https://www.w3schools.com/howto/howto_css_overlay.asp
 
     position: fixed; /* Sit on top of the page content */
@@ -43,9 +84,35 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer;
+
+}
+
+.shopButtons div ion-row ion-col ion-card {
+
+    background-color: #305C8F;
+    color: white;
+
+}
+
+.cardOverlay ion-card {
+
+    background-color: #D9D9D9;
+    font-family: 'Happy Monkey', sans-serif;
+    color: black;
+
+}
+
+.blackOverlay {
+
+    background-color: rgba(0,0,0,0.5);
+
+}
+
+.greenOverlay {
+
+    background-color: rgba(11, 185, 69, 0.7);
 
 }
 
@@ -71,14 +138,13 @@
 
 }
 
-.buttonText {
+.buttonText ion-img {
 
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    display: flex;
+    width: 40px;
+    padding-bottom: 5px;
 
 }
+
 
 .shopButtons ion-card {
 
@@ -144,5 +210,24 @@
 
     padding-left: 10px;
     padding-right: 10px;
+
+}
+
+.flightChanges2 ion-segment-button ion-label {
+
+    color: white;
+
+}
+
+.flightChanges ion-segment-button {
+
+    color: white;
+
+}
+
+.flightChanges, .flightChanges2 {
+
+    background-color: #305C8F;
+    border: solid 1px #0d1b2b;
 
 }

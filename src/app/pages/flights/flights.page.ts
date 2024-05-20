@@ -24,6 +24,8 @@ export class FlightsPage implements OnInit {
   wifiCost: any;
   canPayWifi: any;
 
+  alreadyHasWifi: any; 
+
   chosenBaggage: any;
   weightCost: any;
 
@@ -50,6 +52,8 @@ export class FlightsPage implements OnInit {
     this.canPayWifi = true;
 
     this.pointsOwed = [];
+
+    this.alreadyHasWifi = false;
 
     for (let i = 0; i < this.accountFlights.length; i++) {
 
@@ -228,10 +232,12 @@ export class FlightsPage implements OnInit {
       this.optionChosen = false;
       this.wifiChosen = false;
 
+      this.alreadyHasWifi = true;
+
     }
       
     this.canPayWifi = false;
-
+    
   }
 
 
@@ -246,19 +252,17 @@ export class FlightsPage implements OnInit {
 
   getWifi() {
 
-    let hasWifi = false;
-
     for (let i = 0; i < this.accountFlights[this.flightIndex].usedItems.length; i++) {
 
       if (this.accountFlights[this.flightIndex].usedItems[i].itemName == "Wi-Fi") {
 
-        hasWifi = true;
+        this.alreadyHasWifi = true;
 
       }
 
     }
 
-    if (!hasWifi) {
+    if (!this.alreadyHasWifi) {
 
       this.optionChosen = true;
       this.wifiChosen = true;
@@ -332,6 +336,18 @@ export class FlightsPage implements OnInit {
       this.overlayOn = true;
 
       this.flightIndex = i;
+
+      this.chosenClass = this.accountFlights[this.flightIndex].class;
+
+      for (let i = 0; i < this.accountFlights[this.flightIndex].usedItems.length; i++) {
+
+        if (this.accountFlights[this.flightIndex].usedItems[i].itemName == "Wi-Fi") {
+  
+          this.alreadyHasWifi = true;
+  
+        }
+  
+      }
 
     }
 

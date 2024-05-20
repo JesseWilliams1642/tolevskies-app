@@ -136,6 +136,8 @@ export class LuckydipPage implements OnInit {
 
   roll() {
 
+    
+
     this.canRoll = true;
 
     let randomNum = Math.random() * 1000;
@@ -265,6 +267,8 @@ export class LuckydipPage implements OnInit {
       this.dataService.setData(1,this.accountDetails);
 
     }
+
+    this.accountDetails.lastRoll = new Date();
 
     this.itemRolled = true; 
     this.rollEntries -= 1;
