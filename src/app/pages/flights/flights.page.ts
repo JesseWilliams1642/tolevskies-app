@@ -138,17 +138,9 @@ export class FlightsPage implements OnInit {
 
     for (let i = 0; i < toBeSpliced.length; i++) {
 
-      console.log(i);
-
       let j = (toBeSpliced.length - 1) - i;
 
-      console.log(j);
-
-      console.log(toBeSpliced[j]);
-
       this.accountDetails.items.splice(toBeSpliced[j],1);
-
-      console.log(this.accountDetails.items);
 
       this.dataService.setData(1,this.accountDetails);
 

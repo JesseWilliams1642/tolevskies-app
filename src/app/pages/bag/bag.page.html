@@ -1,21 +1,48 @@
+<head>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+
 <ion-content [fullscreen]="true" class="background">
 
   <div class="backgroundOverlay">
+
+
   
-  <ion-card class="bagLabel">
+  <div class="widthCentering"> 
+    
+  <ion-card class="bagLabel" style="background-color: rgba(0,0,0,0.6); padding: 10px;">
 
-    <span> MY ITEMS </span>
+    <span style="font-family: 'Zen Dots', sans-serif; font-weight: bold; color: white;"> MY ITEMS </span>
 
-  </ion-card>
+  </ion-card> 
+
+  </div>
 
   <ion-card *ngFor="let item of accountItems" class="bagCards">
 
-    <div>ITEM IMAGE</div> 
+    <div class="imageSize">
+
+      <ion-img src="./assets/images/itemBagOfNuts.png/" *ngIf="item.itemName == 'Bag of Nuts'"></ion-img>
+      <ion-img src="./assets/images/itemCoffee.png/" *ngIf="item.itemName == 'Coffee'"></ion-img>
+      <ion-img src="./assets/images/itemWine.png/" *ngIf="item.itemName == 'Wine'"></ion-img>
+      <ion-img src="./assets/images/itemPringles.png/" *ngIf="item.itemName == 'Can of Pringles'"></ion-img>
+      <ion-img src="./assets/images/itemCookie.png/" *ngIf="item.itemName == 'Cookie'"></ion-img>
+      <ion-img src="./assets/images/itemSticker.png/" *ngIf="item.itemName == 'FlyDreamAir Sticker'"></ion-img>
+      <ion-img src="./assets/images/itemCap.png/" *ngIf="item.itemName == 'FlyDreamAir Cap'"></ion-img>
+      <ion-img src="./assets/images/itemJacket.png/" *ngIf="item.itemName == 'FlyDreamAir Jacket'"></ion-img>
+      <ion-img src="./assets/images/itemJumper.png/" *ngIf="item.itemName == 'FlyDreamAir Jumper'"></ion-img>
+      <ion-img src="./assets/images/itemShirt.png/" *ngIf="item.itemName == 'FlyDreamAir Shirt'"></ion-img>
     
+    </div>
+
     <div class="rightDiv">
 
-      <div>{{item.itemName}}</div> <br />
-      <div> Quantity: {{item.quantity}} </div>
+      <div style="font-family: 'Verdana', sans-serif;">{{item.itemName}}</div> <br />
+      <div style="font-family: 'Verdana', sans-serif;"> Quantity: {{item.quantity}} </div>
 
     </div>
 

@@ -16,6 +16,7 @@ export class LuckydipPage implements OnInit {
   rollEntries: any;
   timerText: any;
   timer: any;
+  canRoll: any;
 
   itemWon: any;
   itemRolled: any;
@@ -28,6 +29,7 @@ export class LuckydipPage implements OnInit {
     this.rollEntries = this.accountDetails.rollEntries;
 
     this.itemRolled = false;
+    this.canRoll = true;
 
   }
 
@@ -35,6 +37,8 @@ export class LuckydipPage implements OnInit {
   ngOnInit() {
 
     if (this.rollEntries === 0) {
+
+      this.canRoll = false;
 
       let waitTime = 1209600000; // A fortnight
       
@@ -93,10 +97,12 @@ export class LuckydipPage implements OnInit {
 
     if (timeLeft <= 0) {
 
-      this.timer.clearInterval()
+      clearInterval(this.timer);
       this.timerText = "00:00:00";
       this.rollEntries += 1;
       this.accountDetails.rollEntries += 1;
+
+      this.canRoll = true;
 
     } else {
 
@@ -121,7 +127,16 @@ export class LuckydipPage implements OnInit {
 
   }
 
+  cantRoll() {
+
+    this.itemRolled = false;
+    this.canRoll = false;
+
+  }
+
   roll() {
+
+    this.canRoll = true;
 
     let randomNum = Math.random() * 1000;
 

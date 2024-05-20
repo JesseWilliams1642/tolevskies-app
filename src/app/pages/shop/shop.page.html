@@ -1,8 +1,17 @@
+<head>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dr+Sugiyama&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+
+</head>
+
 <div *ngIf="overlayOn" class="overlay overlayDiv">
 
-  <ion-card class="cardOverlay">
+  <ion-card class="cardOverlay overlayCardBackground">
 
-    <div style="display: block; align-items: left; justify-content: left; text-align: left;">
+    <div style="display: block; align-items: left; justify-content: left; text-align: left; padding-bottom: 5px;" class="backButton">
       <ion-button (click)="back()"> Back </ion-button> 
     </div>
 
@@ -10,7 +19,7 @@
 
       <div style="padding-top: 20px;"> Purchase Points </div>
 
-      <div style="padding-top: 20px;"> POINTS: {{accountDetails.points}}</div>
+      <div style="padding-top: 20px; padding-bottom: 10px;"> POINTS: {{accountDetails.points}}</div>
 
       <ion-card>
 
@@ -24,7 +33,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getPoints(100)"> Purchase </ion-button>
 
@@ -46,7 +55,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getPoints(450)"> Purchase </ion-button>
 
@@ -68,7 +77,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getPoints(5000)"> Purchase </ion-button>
 
@@ -85,7 +94,7 @@
 
       <div style="padding-top: 20px;"> Purchase Lucky Dip Entries </div>
 
-      <div style="padding-top: 20px;"> POINTS: {{accountDetails.points}}</div>
+      <div style="padding-top: 20px; padding-bottom: 10px;"> POINTS: {{accountDetails.points}}</div>
 
       <ion-card>
 
@@ -99,7 +108,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getEntries(1,1000)" *ngIf="!(accountDetails.points >= 1000)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getEntries(1,1000)" *ngIf="accountDetails.points >= 1000"> Purchase </ion-button>
@@ -122,7 +131,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getEntries(5,4500)" *ngIf="!(accountDetails.points >= 4500)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getEntries(5,4500)" *ngIf="accountDetails.points >= 4500"> Purchase </ion-button>
@@ -145,7 +154,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getEntries(10,8500)" *ngIf="!(accountDetails.points >= 8500)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getEntries(10,8500)" *ngIf="accountDetails.points >= 8500"> Purchase </ion-button>
@@ -168,7 +177,7 @@
 
       <div style="padding-top: 20px;"> Purchase In-Flight Items </div>
 
-      <div style="padding-top: 20px;"> POINTS: {{accountDetails.points}}</div>
+      <div style="padding-top: 20px; padding-bottom: 10px;"> POINTS: {{accountDetails.points}}</div>
 
       <ion-card>
 
@@ -182,7 +191,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('Cookie',200)" *ngIf="!(accountDetails.points >= 200)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('Cookie',200)" *ngIf="accountDetails.points >= 200"> Purchase </ion-button>
@@ -205,7 +214,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('Bag of Nuts',100)" *ngIf="!(accountDetails.points >= 100)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('Bag of Nuts',100)" *ngIf="accountDetails.points >= 100"> Purchase </ion-button>
@@ -228,7 +237,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('Wine',1000)" *ngIf="!(accountDetails.points >= 1000)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('Wine',1000)" *ngIf="accountDetails.points >= 1000"> Purchase </ion-button>
@@ -251,7 +260,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('Can of Pringles',500)" *ngIf="!(accountDetails.points >= 500)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('Can of Pringles',500)" *ngIf="accountDetails.points >= 500"> Purchase </ion-button>
@@ -274,7 +283,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('Coffee',300)" *ngIf="!(accountDetails.points >= 300)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('Coffee',300)" *ngIf="accountDetails.points >= 300"> Purchase </ion-button>
@@ -296,7 +305,7 @@
 
       <div style="padding-top: 20px;"> Purchase Merchandise </div>
 
-      <div style="padding-top: 20px;"> POINTS: {{accountDetails.points}} </div>
+      <div style="padding-top: 20px; padding-bottom: 10px;"> POINTS: {{accountDetails.points}} </div>
 
       
       <ion-card>
@@ -311,7 +320,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('FlyDreamAir Cap',1000)" *ngIf="!(accountDetails.points >= 1000)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('FlyDreamAir Cap',1000)" *ngIf="accountDetails.points >= 1000"> Purchase </ion-button>
@@ -334,7 +343,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('FlyDreamAir Shirt',2000)" *ngIf="!(accountDetails.points >= 2000)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('FlyDreamAir Shirt',2000)" *ngIf="accountDetails.points >= 2000"> Purchase </ion-button>
@@ -357,7 +366,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('FlyDreamAir Jacket',3000)" *ngIf="!(accountDetails.points >= 3000)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('FlyDreamAir Jacket',3000)" *ngIf="accountDetails.points >= 3000"> Purchase </ion-button>
@@ -380,7 +389,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('FlyDreamAir Jumper',3000)" *ngIf="!(accountDetails.points >= 3000)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('FlyDreamAir Jumper',3000)" *ngIf="accountDetails.points >= 3000"> Purchase </ion-button>
@@ -403,7 +412,7 @@
 
           </ion-col>
 
-          <ion-col>
+          <ion-col class="purchaseButton">
 
             <ion-button (click)="getItem('FlyDreamAir Sticker',300)" *ngIf="!(accountDetails.points >= 300)" [disabled]=true> Purchase </ion-button>
             <ion-button (click)="getItem('FlyDreamAir Sticker',300)" *ngIf="accountDetails.points >= 300"> Purchase </ion-button>
@@ -436,11 +445,11 @@
   
   <div class="centered backgroundOverlay">
 
-    <div> TOLEVSKIES </div>
+    <div style="font-family: 'Dr Sugiyama', sans-serif; font-size: 30px;"> TOLEVSKIES </div>
 
-    <div> SHOP </div>
+    <div style="font-family: 'Dr Sugiyama', sans-serif; font-size: 30px;"> SHOP </div>
 
-    <div style="padding-top: 20px;"> POINTS: {{accountDetails.points}}</div>
+    <div style="padding-top: 20px; font-family: 'Happy Monkey', system-ui;"> POINTS: {{accountDetails.points}}</div>
 
     <ion-row>
       
@@ -450,13 +459,23 @@
       
       <ion-col>
 
-        <ion-card class="buttonText" (click)="buyPoints()"> Purchase <br /> Points </ion-card>
+        <ion-card class="buttonText" (click)="buyPoints()"> 
+          
+          <ion-img src="./assets/images/coin.png/"></ion-img>
+          Purchase <br /> Points 
+        
+        </ion-card>
 
       </ion-col>
 
       <ion-col>
 
-        <ion-card class="buttonText" (click)="buyEntries()"> Lucky Dip <br /> Entries </ion-card>
+        <ion-card class="buttonText" (click)="buyEntries()">
+          
+          <ion-img src="./assets/images/shopLuckyDip.png/"></ion-img>
+          Lucky Dip <br /> Entries 
+        
+        </ion-card>
 
       </ion-col>
 
@@ -468,13 +487,23 @@
       
       <ion-col>
 
-        <ion-card class="buttonText" (click)="buyMerch()"> FlyDreamAir <br /> Merchandise </ion-card>
+        <ion-card class="buttonText" (click)="buyMerch()"> 
+          
+          <ion-img src="./assets/images/shopMerch.png/"></ion-img>
+          FlyDreamAir <br /> Merchandise
+        
+        </ion-card>
 
       </ion-col>
 
       <ion-col>
 
-        <ion-card class="buttonText" (click)="buyItems()"> On-Flight <br /> Items </ion-card>
+        <ion-card class="buttonText" (click)="buyItems()">
+          
+          <ion-img src="./assets/images/shopInFlight.png/"></ion-img>
+          In-Flight <br /> Items 
+        
+        </ion-card>
 
       </ion-col>
 

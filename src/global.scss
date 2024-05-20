@@ -96,3 +96,18 @@ ion-footer ion-row ion-toolbar ion-segment ion-segment-button ion-label {
     color: white;
 
 }
+
+.widthCentering {
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.overlayCardBackground {
+
+    --background: url(./assets/images/background2.png/);
+
+}

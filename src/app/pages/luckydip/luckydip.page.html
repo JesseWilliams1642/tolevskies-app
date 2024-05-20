@@ -1,33 +1,48 @@
+<head>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dr+Sugiyama&display=swap" rel="stylesheet">
+  
+</head>
+
 <ion-content [fullscreen]="true" class="background">
   
-  <div class="centered backgroundOverlay">
+  <div class="widthCentering backgroundOverlay">
 
-    <div> TOLEVSKIES </div>
-    <div style="margin-bottom: 20px;"> Lucky Dip </div>
+    <div style="font-family: 'Dr Sugiyama', sans-serif; font-size: 30px; margin-top: 120px;"> TOLEVSKIES </div>
+    <div style="margin-bottom: 20px; font-family: 'Dr Sugiyama', sans-serif; font-size: 25px;"> Lucky Dip </div>
 
     <ion-row>
 
-      <ion-card class="entrees">
+      <ion-card class="entrees" style="font-family: 'Verdana', sans-serif; padding-bottom:100px;">
 
         Number of <br /> Entries: <br /> <br />
-        {{this.rollEntries}}
+        {{this.rollEntries}} 
 
       </ion-card>
 
-      <ion-card class="entrees">
+      <ion-card class="entrees" style="font-family: 'Verdana', sans-serif; padding-bottom:100px;">
 
+        <div> 
         Time Until <br /> Next Entry <br />
         (DD:HH:MM): <br /> <br />
-        {{this.timerText}}
+        {{this.timerText}} 
+        </div>
         
       </ion-card>
 
     </ion-row>
+    
+    <div style="margin-top: 80px;">
 
-    <ion-button (click)="roll()" *ngIf="rollEntries > 0"> Open Chest </ion-button>
-    <ion-button (click)="roll()" *ngIf="!(rollEntries > 0)" [disabled]=true> Open Chest </ion-button> 
+      <ion-img src="./assets/images/chestShop.png/" (click)="roll()" *ngIf="rollEntries > 0"></ion-img>
+      <ion-img src="./assets/images/chestShop.png/" (click)="cantRoll()" *ngIf="!(rollEntries > 0)"></ion-img> 
+    
+    </div>
 
-    <div *ngIf="itemRolled"> You have won {{itemWon}} </div>
+    <div *ngIf="itemRolled" style="margin-top: 10px;"> You have won {{itemWon}} </div>
+    <div *ngIf="!canRoll" style="margin-top: 10px;"> You do not have any roll entries left. </div>
 
   </div>
 
