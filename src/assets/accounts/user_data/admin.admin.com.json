@@ -21,16 +21,7 @@
 			"class": "Economy",
 			"status": "incomplete",
 			"baggageAllowance": 2,
-			"usedItems": [
-			
-				{ 
-					
-					"itemName": "Wine",
-					"quantity": 2
-				
-				}
-			
-			]
+			"usedItems": []
 			
 		},
 		

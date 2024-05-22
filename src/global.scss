@@ -97,6 +97,12 @@ ion-footer ion-row ion-toolbar ion-segment ion-segment-button ion-label {
 
 }
 
+ion-footer ion-segment {
+
+    --background: rgb(11, 10, 52);
+
+}
+
 .widthCentering {
 
     display: flex;
